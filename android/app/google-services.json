@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "327239564108",
+    "project_id": "smart-home-ptit",
+    "storage_bucket": "smart-home-ptit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:327239564108:android:1acd0437b31df021d3ede9",
+        "android_client_info": {
+          "package_name": "com.example.smart_home"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP_UMKjk9HM8ZYGj0PaCBUu5IAIy1rUG0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
