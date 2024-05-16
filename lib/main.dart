@@ -2,7 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/firebase_options.dart';
-import 'package:smart_home/provider/data_provider.dart';
+import 'package:smart_home/provider/control_provider.dart';
+import 'package:smart_home/provider/weather_provider.dart';
 import 'package:smart_home/screens/home.dart';
 
 void main() async {
@@ -21,7 +22,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => DataProvider()),
+        ChangeNotifierProvider(create: (context) => WeatherProvider()),
+        ChangeNotifierProvider(create: (context) => ControlProvider()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
