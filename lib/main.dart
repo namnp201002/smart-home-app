@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smart_home/firebase_options.dart';
+import 'package:smart_home/provider/data_provider.dart';
 import 'package:smart_home/screens/home.dart';
 
 void main() async {
@@ -19,8 +20,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: const [
-        // ChangeNotifierProvider(create: (context) => SignInProvider()),
+      providers: [
+        ChangeNotifierProvider(create: (context) => DataProvider()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,
@@ -29,8 +30,10 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: const Scaffold(
-            body: Home(),
+          home: const SafeArea(
+            child: Scaffold(
+              body: Home(),
+            ),
           )),
     );
   }

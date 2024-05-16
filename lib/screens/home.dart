@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:smart_home/components/device_control.dart';
+import 'package:smart_home/screens/temperature.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -10,10 +12,19 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child:  Text("Smart Home App", style: TextStyle(
-        
-      ),)
+    return const Column(
+     children: [
+       SizedBox(height: 20,),
+       Temperature(),
+       Row(
+         children: [
+           Expanded(flex: 1,child: DeviceControl(device: "Fan", value: true,)),
+           SizedBox(width: 10,),
+           Expanded(flex: 1,child: DeviceControl(device: "Bulb", value: false,))
+
+         ],
+       )
+     ],
     );
   }
 }
