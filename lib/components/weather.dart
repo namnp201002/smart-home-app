@@ -64,7 +64,7 @@ class _WeatherState extends State<Weather> {
                           Text(
                             dataProvider.description!,
                             style: const TextStyle(
-                                fontSize: 25,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white),
                           ),

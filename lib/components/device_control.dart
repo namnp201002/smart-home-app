@@ -13,7 +13,7 @@ class DeviceControl extends StatefulWidget {
       required this.value,
       required this.auto,
       required this.device,
-      required this.updateAuto});
+      required this.updateAuto,required this.updateDevice});
 
   final String icon;
   final bool auto;
@@ -21,6 +21,7 @@ class DeviceControl extends StatefulWidget {
   final String device;
 
   final Function(bool) updateAuto;
+  final Function(bool) updateDevice;
 
   @override
   State<DeviceControl> createState() => _DeviceControlState();
@@ -103,19 +104,7 @@ class _DeviceControlState extends State<DeviceControl> {
                     onChanged: widget.auto
                         ? null
                         : (value) {
-                            if (widget.device == 'Bulb 1') {
-                              context
-                                  .read<ControlProvider>()
-                                  .updateLed1(value);
-                            } else if (widget.device == 'Bulb 2') {
-                              context
-                                  .read<ControlProvider>()
-                                  .updateLed2(value);
-                            } else if (widget.device == 'Fan') {
-                              context
-                                  .read<ControlProvider>()
-                                  .updateFan(value);
-                            }
+                            widget.updateDevice(value);
                             context.read<ControlProvider>().getData();
                           })
               ],

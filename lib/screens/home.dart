@@ -22,7 +22,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   // Timer? _dataFetchTimer; // Fetch data moi giay
 
-
   @override
   void initState() {
     // TODO: implement initState
@@ -45,11 +44,24 @@ class _HomeState extends State<Home> {
     context.read<ControlProvider>().updateControl3(value);
   }
 
+  void updateLed1(value) {
+    context.read<ControlProvider>().updateLed1(value);
+  }
+
+  void updateLed2(value) {
+    context.read<ControlProvider>().updateLed2(value);
+  }
+
+  void updateFan(value) {
+    context.read<ControlProvider>().updateFan(value);
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.purplePrimaryColor1,
-      child: SingleChildScrollView(
+    return SingleChildScrollView(
+      child: Container(
+        height: 1000,
+        color: AppColors.purplePrimaryColor1,
         child: Column(
           children: [
             const SizedBox(
@@ -69,27 +81,31 @@ class _HomeState extends State<Home> {
                         Expanded(
                             flex: 1,
                             child: DeviceControl(
-                                icon: "💡",
-                                device: "Bulb 1",
-                                auto: dataFirebaseProvider.control1 == 'tat'
-                                    ? false
-                                    : true,
-                                value: dataFirebaseProvider.led1 == 'tat'
-                                    ? false
-                                    : true,
-                                updateAuto: updateControl1)),
+                              icon: "💡",
+                              device: "Bulb 1",
+                              auto: dataFirebaseProvider.control1 == 'tat'
+                                  ? false
+                                  : true,
+                              value: dataFirebaseProvider.led1 == 'tat'
+                                  ? false
+                                  : true,
+                              updateAuto: updateControl1,
+                              updateDevice: updateLed1,
+                            )),
                         Expanded(
                             flex: 1,
                             child: DeviceControl(
-                                icon: "💡",
-                                device: "Bulb 2",
-                                auto: dataFirebaseProvider.control2 == 'tat'
-                                    ? false
-                                    : true,
-                                value: dataFirebaseProvider.led2 == 'tat'
-                                    ? false
-                                    : true,
-                                updateAuto: updateControl2)),
+                              icon: "💡",
+                              device: "Bulb 2",
+                              auto: dataFirebaseProvider.control2 == 'tat'
+                                  ? false
+                                  : true,
+                              value: dataFirebaseProvider.led2 == 'tat'
+                                  ? false
+                                  : true,
+                              updateAuto: updateControl2,
+                              updateDevice: updateLed2,
+                            )),
                         const SizedBox(
                           width: 15,
                         )
@@ -103,15 +119,17 @@ class _HomeState extends State<Home> {
                         Expanded(
                             flex: 2,
                             child: DeviceControl(
-                                icon: "☢️",
-                                auto: dataFirebaseProvider.control3 == 'tat'
-                                    ? false
-                                    : true,
-                                device: "Fan",
-                                value: dataFirebaseProvider.fan == 'tat'
-                                    ? false
-                                    : true,
-                                updateAuto: updateControl3)),
+                              icon: "☢️",
+                              auto: dataFirebaseProvider.control3 == 'tat'
+                                  ? false
+                                  : true,
+                              device: "Fan",
+                              value: dataFirebaseProvider.fan == 'tat'
+                                  ? false
+                                  : true,
+                              updateAuto: updateControl3,
+                              updateDevice: updateFan,
+                            )),
                         const Expanded(flex: 1, child: SizedBox.shrink()),
                         const SizedBox(
                           width: 115,
@@ -124,7 +142,7 @@ class _HomeState extends State<Home> {
             ),
 
             SizedBox(
-              height: 10,
+              height: 30,
             ),
             ElevatedButton(
               onPressed: () {
